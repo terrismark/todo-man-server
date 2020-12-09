@@ -31,7 +31,7 @@ app.get('/',
 
 async function start() {
     try {
-        await mongoose.connect("mongodb+srv://SuperUser:vYgohbTNDe25glMs@cluster0.i3alm.mongodb.net/TodoMan?retryWrites=true&w=majority", {
+        await mongoose.connect(process.env.MONGO_URI, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
             useCreateIndex: true
