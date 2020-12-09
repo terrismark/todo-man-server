@@ -35,8 +35,5 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "cross-env": "^7.0.3"
-  },
-  "engines": {
-    "node": "14.15.1"
   }
 }
