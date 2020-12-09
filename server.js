@@ -1,5 +1,6 @@
 import express from 'express'
 import mongoose from 'mongoose'
+import path from 'path'
 import cors from 'cors'
 import dotenv from 'dotenv'
 
@@ -18,6 +19,10 @@ app.use(cors())
 
 app.use('/api/todos', todos)
 app.use('/api/lists', lists)
+
+app.get('*', (req, res) => {
+    res.send('Hello from TodoMan!');
+});
 
 app.get('/', 
     (req, res) => {
