@@ -43,9 +43,8 @@ router.post('/:id',
         })
 
         List.findById(req.params.id)
-            .sort({ date: -1 })
             .then(item => {
-                item.todos.push(newItem)
+                item.todos.unshift(newItem)
                 item.save()
                     .then(item => res.json(item.todos))
                     .catch(e => res.json({ err: "can't save" }))
