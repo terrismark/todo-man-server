@@ -3,9 +3,7 @@ import mongoose from 'mongoose'
 import cors from 'cors'
 import dotenv from 'dotenv'
 
-import todos from './routes/api/todos.js'
 import lists from './routes/api/lists.js'
-
 
 const app = express()
 dotenv.config()
@@ -16,18 +14,11 @@ app.use(express.json({extended: true}))
 app.use(express.urlencoded({extended: true}))
 app.use(cors())
 
-app.use('/api/todos', todos)
 app.use('/api/lists', lists)
 
 app.get('*', (req, res) => {
     res.send('Hello from TodoMan!');
 });
-
-app.get('/', 
-    (req, res) => {
-        res.send('Hello from TodoMan!')
-    }
-)
 
 async function start() {
     try {
