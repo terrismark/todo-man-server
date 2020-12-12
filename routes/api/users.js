@@ -24,6 +24,7 @@ router.get('/', auth,
 // @route POST api/users/register
 router.post('/register', 
     [
+        check('username', "Invalid username").isLength({ max: 12 }),
         check('email', 'Invalid email').isEmail(),
         check('password', 'Invalid password').isLength({ min: 6 })
     ],
