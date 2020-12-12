@@ -1,23 +1,26 @@
 import express from 'express'
-import List from '../../models/list.js'
-import Todo from '../../models/todo.js'
+import List from '../../models/List.js'
+import Todo from '../../models/Todo.js'
+
+import auth from '../../token_verification.js'
 
 const router = express.Router()
 
 // @route GET api/lists
-router.get('/', 
+router.get('/', auth,
     (req, res) => {
-        List.find()
+        List.find({ owner: req.user.userId })
             .sort({ date: -1 })
             .then(lists => res.json(lists))
     }
 )
 
 // @route POST api/lists
-router.post('/', 
+router.post('/', auth,
     (req, res) => {
         const newItem = new List({
-            name: req.body.name
+            name: req.body.name,
+            owner: req.user.userId
         })
         newItem.save()
             .then(item => res.json(item))
@@ -25,7 +28,7 @@ router.post('/',
 )
 
 // @route DELETE api/lists/:id
-router.delete('/:id', 
+router.delete('/:id', auth,
     (req, res) => {
         List.findById(req.params.id)
             .then(item => item.remove()
@@ -35,7 +38,7 @@ router.delete('/:id',
 )
 
 // @route POST api/lists/:id
-router.post('/:id', 
+router.post('/:id', auth,
     (req, res) => {
         const newItem = new Todo({
             name: req.body.name,
@@ -53,7 +56,7 @@ router.post('/:id',
 )
 
 // @route PATCH api/lists/:id
-router.patch('/:id', 
+router.patch('/:id', auth,
     (req, res) => {
         List.findById(req.params.id, (error, item) => {
             if (req.body.type === "delete") {

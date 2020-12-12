@@ -4,6 +4,7 @@ import cors from 'cors'
 import dotenv from 'dotenv'
 
 import lists from './routes/api/lists.js'
+import users from './routes/api/users.js'
 
 const app = express()
 dotenv.config()
@@ -15,6 +16,7 @@ app.use(express.urlencoded({extended: true}))
 app.use(cors())
 
 app.use('/api/lists', lists)
+app.use('/api/users', users)
 
 app.get('*', (req, res) => {
     res.send('Hello from TodoMan!');

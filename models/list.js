@@ -22,7 +22,11 @@ const ListSchema = mongoose.Schema({
             type: Date,
             default: Date.now
         }
-    }]
+    }],
+    owner: {
+        type: mongoose.Types.ObjectId,
+        ref: 'User'
+    }
 })
 
 const List = mongoose.model('List', ListSchema)
