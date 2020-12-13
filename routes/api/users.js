@@ -60,7 +60,7 @@ router.post('/register',
             const token = jwt.sign(
                 { userId: user.id },
                 process.env.JWT_SECRET_KEY,
-                { expiresIn: 600 }
+                { expiresIn: '1d' }
             )
 
             res.json({
@@ -116,7 +116,7 @@ router.post('/login',
             const token = jwt.sign(
                 { userId: user.id },
                 process.env.JWT_SECRET_KEY,
-                { expiresIn: 600 }
+                { expiresIn: '1d' }
             )
 
             res.json({
