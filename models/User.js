@@ -17,11 +17,7 @@ const UserSchema = mongoose.Schema({
     reg_date: {
         type: Date,
         default: Date.now()
-    },
-    lists: [{
-        type: mongoose.Types.ObjectId,
-        ref: 'List'
-    }]
+    }
 })
 
 const User = mongoose.model('User', UserSchema)

@@ -4,6 +4,7 @@ import jwt from 'jsonwebtoken'
 import { check, validationResult } from 'express-validator'
 import dotenv from 'dotenv'
 import User from '../../models/User.js'
+import List from '../../models/List.js'
 
 import auth from '../../token_verification.js'
 
@@ -54,7 +55,12 @@ router.post('/register',
             const hashedPassword = await bcrypt.hash(password, 12)
 
             // creating new user
-            const user = new User({ username, email, password: hashedPassword })
+            const user = new User({ 
+                username, 
+                email, 
+                password: hashedPassword
+            })
+
             await user.save()
 
             const token = jwt.sign(
@@ -132,5 +138,22 @@ router.post('/login',
         }
     }
 )
+
+// @route POST api/users/:id
+router.delete('/:id', 
+    async (req, res) => {
+        try {
+            const user = await User.findById(req.params.id)
+            await user.remove()
+
+            const lists = await List.find({ owner: req.params.id })
+            lists.forEach(list => list.remove())
+
+            res.status(200).json({ success: true })
+
+        } catch(error) {
+            res.status(500).json({ message: 'Something went wrong... Try again' })
+        } 
+    })
 
 export default router
