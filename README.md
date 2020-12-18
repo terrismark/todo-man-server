@@ -8,7 +8,8 @@ A simple todo app api with auth
 
 ### Frontend
 
-## [TodoMan client](https://github.com/MarkTerris/TodoMan)
+[TodoMan client](https://github.com/MarkTerris/TodoMan)
+______________
 
 [React](https://reactjs.org/)
 
