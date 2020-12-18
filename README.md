@@ -1,4 +1,5 @@
 # TodoMan server
+
 ## [TodoMan](https://todo-man.netlify.app/)
 
 A simple todo app api with auth 
@@ -7,7 +8,7 @@ A simple todo app api with auth
 
 ### Frontend
 
-## [TodoMan app](https://github.com/MarkTerris/TodoMan)
+## [TodoMan client](https://github.com/MarkTerris/TodoMan)
 
 [React](https://reactjs.org/)
 
