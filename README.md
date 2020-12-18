@@ -4,6 +4,16 @@ A simple todo app api with auth
 
 ## This project was build with 
 
+### Frontend
+
+## [TodoMan app](https://github.com/MarkTerris/TodoMan)
+
+[React](https://reactjs.org/)
+
+[Redux](https://redux.js.org/)
+
+[Material UI](https://material-ui.com/)
+
 ### Backend
 
 [Nodejs](https://nodejs.org/)
